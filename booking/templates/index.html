@@ -1,0 +1,96 @@
+{% extends 'theme.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Search Invoice :</h5>
+            <form action="" method="post">
+              {% csrf_token %}
+              <input class="form-control form-control-lg" type="text" name="invoiceno" placeholder="Enter Invoice No:">
+              <button type="submit" class="btn btn-success mt-2">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Select batch :</h5>
+            <form action="" method="post">
+              {% csrf_token %}
+              <select class="form-control form-control-lg" placeholder="select a batch:" name="batch">
+                {% for a in batchtime}
+                <option value="{{a.Batchtime}}">{{a.Batchtime}}</option>
+              </select>
+              <button type="submit" class="btn btn-success mt-2">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Course</h5>
+          <form action="" method="post">
+            <input class="form-control form-control-lg" type="text" placeholder="select a batch:">
+          </form>
+          <button class="btn btn-success mt-2">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="card" style="width: 400px;">
+      <h5 class="card-header">student details</h5>
+      <div class="card-body">
+        <h5 class="card-title">Name: {{form.Name}}</h5>
+        <p class="card-text">phone number:{{form.phone1}}</p>
+        <p class="card-text">place: {{form.Place}}</p>
+      </div>
+    </div>
+    <br>
+    <div class="card" style="width: 400px;">
+      <h5 class="card-header">course details</h5>
+      <div class="card-body">
+        <h5 class="card-title">Course: {{form.Course_course}}</h5>
+        <p class="card-text">BSD: {{form.BSD}}</p>
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <h5 class="card-header">class details</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Invoiceno</th>
+            <th scope="col">Date</th>
+            <th scope="col">Subject</th>
+            <th scope="col">report</th>
+          </tr>
+        </thead>
+        <tr>
+          <th scope="row">{{do.Invoiceno}}</th>
+          <td>{{do.SelectDate}}</td>
+          <td>{{do.Course_SelectSubject}}</td>
+          <td>{{do.EnterClassReport}}</td>
+        </tr>
+      </table>
+    </div>
+  <table class="table">
+      <tr>
+        <th scope="row">{{batch.Invoiceno}}</th>
+        <td>{{batch.Name}}</td>
+        <td>{{batch.Course_course}}</td>
+        <td>{{batch.phone1}}</td>
+        <td>{{batch.phone2}}</td>
+        <td>{{batch.BSD}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</body>
+</html>
+{% endblock %}

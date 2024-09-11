@@ -1,0 +1,39 @@
+{% extends 'theme.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">invoice No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Course</th>
+                <th scope="col">Phone1</th>
+                <th scope="col">Phone2</th>
+                <th scope="col">BSD</th>
+              </tr>
+            </thead>
+            {% for a in done %}
+          <tr>
+            <th scope="row">{{a.Invoiceno}}</th>
+            <td>{{a.Name}}</td>
+            <td>{{a.Course_course}}</td>
+            <td>{{a.phone1}}</td>
+            <td>{{a.phone2}}</td>
+            <td>{{a.BSD}}</td>
+          </tr>
+          {% endfor %} 
+            </table>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'theme.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Attendance Sheet</h1>
+    <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <form action="" method="post">
+                {%csrf_token %}
+              <h5 class="card-title">Batchtime</h5>
+                <select class="form-control form-control-lg" placeholder="select a batch:" name="batch">
+                    {% for a in atten %}
+                    <option value="{{a.Batchtime}}">{{a.Batchtime}}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                <input class="form-control form-control-lg" type="date" name="date" placeholder="Enter date No:">
+                <br>
+                <button type="submit" class="btn btn-success">search</button>
+                </form>
+            </div>
+          </div>
+        </div>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-header">
+              student details
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                      {% for a in atten %}
+                        <tr>
+                            <th scope="row">{{a.Name}}</th>
+                            <th>{{a.Course_course}}</th>
+                            <th><input type="checkbox"> present</th>
+                            <th><input type="checkbox"> absent</th>
+                            <th><input type="checkbox"> informed</th>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <form action="" method="post">
+                  {% csrf_token %}
+                <button type="submit" class="btn btn-success">submit</button>
+                </form>
+            </div>
+          </div>
+</body>
+</html>
+{% endblock %}

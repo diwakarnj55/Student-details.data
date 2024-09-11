@@ -1,0 +1,21 @@
+{% extends 'theme.html' %}
+{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Add Student Fees Details</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{cash}}
+        <br><button type="submit" class="btn btn-success">submit</button>
+    </form>
+</body>
+</html>
+{% endblock %}
